@@ -1,0 +1,25 @@
+.content{
+    padding-top: 200px;
+}
+.tabla-productos{
+    margin-top: 100px
+}
+.side-bar{
+    height: 100vh;
+}
+.sidebar ul{
+    list-style: none;
+}
+.side-bar ul li{
+    padding: 10px;
+}
+.sidebar{
+    padding: 100px 5px 5px
+}
+.pedido{
+    height: 100vh;
+}
+.pedido-content{
+    padding: 60px 60px;
+    margin: 50px;
+}
