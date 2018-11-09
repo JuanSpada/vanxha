@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/entregas">
                                 <i class="fas fa-truck"></i>
                                 <span>Emtregas</span>
                             </a>

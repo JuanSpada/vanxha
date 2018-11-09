@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/entregas', 'LinkController@entregas');
+
 Route::prefix('pedidos')->group(function () {
     Route::get('/', 'PedidosController@index');
     Route::post('/', 'PedidosController@store');
