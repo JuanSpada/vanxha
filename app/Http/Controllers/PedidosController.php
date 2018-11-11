@@ -15,7 +15,8 @@ class PedidosController extends Controller
      */
     public function index(Request $request)
     {
-        $pedidos = Pedido::where('userId', $request->user()->id)->get();
+        $pedidos = Pedido::where('userId', $request->user()->id)->paginate(3);
+
         return view('/pedidos', compact('pedidos', $pedidos));
     }
 
@@ -85,8 +86,10 @@ class PedidosController extends Controller
         $pedido = Pedido::find($id);
         $pedido->nombrePersona = $request->input('nombrePersona');
         $pedido->telefono = $request->input('telefono');
+        $pedido->estado = $request->input('estado');
         $pedido->descripcion = $request->input('descripcion');
         $pedido->precio = $request->input('precio');
+        $pedido->costo = $request->input('costo');
         $pedido->fechaEntrega = $request->input('fechaEntrega');
         $pedido->save();
         return view('pedido')->with('pedido', $pedido);
@@ -99,10 +102,10 @@ class PedidosController extends Controller
      * @param  \App\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $pedido = Pedido::find($id);
-        $pedido->costo = $request->input('costo');
+        $pedido->ganancia = $pedido->precio - $pedido->costo;
         $pedido->save();
         return view('pedido')->with('pedido', $pedido);
     }

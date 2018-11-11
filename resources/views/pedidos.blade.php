@@ -93,6 +93,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $pedidos->links() }}
         
             <div class="col border bg-white">
                 <p>Todavía no tenes pedidos</p>
