@@ -9,7 +9,7 @@ $factory->define(App\Pedido::class, function (Faker $faker) {
         'nombrePersona' => $faker->firstName,
         'telefono' => $faker->phoneNumber,
         'fechaEntrega' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'descripcion' => $faker->paragraph(5),
+        'descripcion' => $faker->paragraph(2),
         'precio' => $faker->numberBetween(5000, 30000)
     ];
 });

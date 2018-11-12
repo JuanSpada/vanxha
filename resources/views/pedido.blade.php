@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="row pedido">
+<div class="row pedido col-12">
     <section class="col-md-12">
         <article class="pedido-content border bg-white">
             <div class="d-flex justify-content-around">
@@ -75,9 +75,9 @@
                                 <input type="number" name="telefono" value="{{$pedido->telefono}}">
                                 <label for="estado">Estado:</label>
                                 <select name="estado">
-                                        <option value="nuevo" selected>Nuevo</option>
-                                        <option value="en taller">En Taller</option>
-                                        <option value="entregado">Entregado</option>
+                                        <option value="0" selected>Nuevo</option>
+                                        <option value="1">En Taller</option>
+                                        <option value="2">Entregado</option>
                                     </select>
                                 <label for="descripcion">Descripcion:</label>
                                 <textarea name="descripcion" rows="3">{{$pedido->descripcion}}</textarea>

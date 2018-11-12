@@ -19,12 +19,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/entregas', 'LinkController@entregas');
+Route::get('/entregas/editar', 'PedidosController@editarcalendar');
 
-Route::prefix('pedidos')->group(function () {
+Route::prefix('pedidos')->name('pedidos.')->group(function () {
     Route::get('/', 'PedidosController@index');
+    Route::get('/calendar', 'PedidosController@calendar')->name('calendar');
     Route::post('/', 'PedidosController@store');
     Route::get('/{pedido}', 'PedidosController@show');
     Route::delete('/{pedido}/delete', 'PedidosController@destroy');
     Route::post('/{pedido}', 'PedidosController@edit');
     Route::put('/{pedido}', 'PedidosController@update');
 });
+

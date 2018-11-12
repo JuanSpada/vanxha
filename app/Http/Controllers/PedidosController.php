@@ -38,6 +38,7 @@ class PedidosController extends Controller
      */
     public function store(Request $request)
     {
+        $succes = 'Tu pedido fue agregado';
         $mensajes = [
             'required' => 'El :attribute es requerido.',
             'max' => 'El máximo de :attribute es :max caracteres.',
@@ -59,7 +60,8 @@ class PedidosController extends Controller
             'fechaEntrega' => $request->input('fechaEntrega'),
             'precio' => $request->input('precio'),
         ]);
-        return redirect('/pedidos');
+
+        return redirect('/pedidos')->with('succes', $succes);
     }
     
 
@@ -122,4 +124,29 @@ class PedidosController extends Controller
         $pedido -> delete();
         return redirect('/pedidos');
     }
+
+    public function calendar(Request $request) {
+        $pedidos = Pedido::all();
+        
+        $pedidosDelCalendario = [];
+
+        foreach ($pedidos as $pedido) {
+            $pedidosDelCalendario[] = [
+                "id" => $pedido->id,
+                "title" => $pedido->nombrePersona,
+                "start" => $pedido->fechaEntrega,
+                "allDay" => true,
+            ];
+        }
+
+        return response()->json($pedidosDelCalendario);
+        
+    }
+    public function editarcalendar(Request $request) {
+        $pedido = Pedido::find($request['id']);
+        $pedido->fechaEntrega = $request['fechaEntrega'];
+        $pedido->save();
+    }
 }
+
+
