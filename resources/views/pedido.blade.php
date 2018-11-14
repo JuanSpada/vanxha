@@ -41,9 +41,9 @@
                 <div class="col-lg-4 border-left">
                     <p>Costo: ${{$pedido->costo}}</p>
                     <p>Estado del Pedido:</p>
-                    <p class="badge">{{$pedido->estado}}</p>
+                    <span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span>
                     <p>Fecha de Entrega:</p>
-                    <p class="badge badge-secondary">{{$pedido->fechaEntrega}}</p><br>
+                    <p class="badge badge-dark">{{$pedido->fechaEntrega}}</p><br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                         Editar
                     </button>                           
@@ -66,29 +66,41 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                        <form action="" method="post" class="d-flex justify-content-center">
+                        <form action="" method="post" class="">
                             @csrf
-                            <div class="form-group col-7 d-flex justify-content-center flex-column">
+                            <div class="form-group">
                                 <label for="nombrePersona">Nombre de la Persona:</label>
-                                <input type="text" name="nombrePersona" value="{{$pedido->nombrePersona}}">
-                                <label for="telefono">Teléfono:</label>
-                                <input type="number" name="telefono" value="{{$pedido->telefono}}">
-                                <label for="estado">Estado:</label>
-                                <select name="estado">
-                                        <option value="0" selected>Nuevo</option>
-                                        <option value="1">En Taller</option>
-                                        <option value="2">Entregado</option>
-                                    </select>
-                                <label for="descripcion">Descripcion:</label>
-                                <textarea name="descripcion" rows="3">{{$pedido->descripcion}}</textarea>
-                                <label for="precio">Precio</label>
-                                <input type="number" name="precio" value="{{$pedido->precio}}">
-                                <label for="costo">Costo</label>
-                                <input type="number" name="costo" placeholder="Costo del taller" value="{{$pedido->costo}}">
-                                <label for="fechaEntrega">Fecha de Entrega:</label>
-                                <input type="date" name="fechaEntrega" value="{{$pedido->fechaEntrega}}">
-                                <button type="input" class="btn btn-primary">Editar</button>
+                                <input class="form-control" type="text" name="nombrePersona" value="{{$pedido->nombrePersona}}">
                             </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input class="form-control" type="number" name="telefono" value="{{$pedido->telefono}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado:</label>
+                                <select class="form-control" name="estado">
+                                    <option value="0" selected>Nuevo</option>
+                                    <option value="1">En Taller</option>
+                                    <option value="2">Entregado</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="descripcion">Descripcion:</label>
+                                <textarea class="form-control" name="descripcion" rows="3">{{$pedido->descripcion}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="precio">Precio</label>
+                                <input class="form-control" type="number" name="precio" value="{{$pedido->precio}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="costo">Costo</label>
+                                <input class="form-control" type="number" name="costo" placeholder="Costo del taller" value="{{$pedido->costo}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaEntrega">Fecha de Entrega:</label>
+                                <input class="form-control" type="date" name="fechaEntrega" value="{{$pedido->fechaEntrega}}">
+                            </div>
+                            <button type="input" class="btn btn-primary">Editar</button>
                         </form>
                     </div>
                 </div>

@@ -15,8 +15,8 @@ class PedidosController extends Controller
      */
     public function index(Request $request)
     {
-        $pedidos = Pedido::where('userId', $request->user()->id)->paginate(3);
-
+        $pedidos = Pedido::where('userId', $request->user()->id)->latest()->paginate(5);
+        echo 'Versión actual de PHP: ' . phpversion();
         return view('/pedidos', compact('pedidos', $pedidos));
     }
 

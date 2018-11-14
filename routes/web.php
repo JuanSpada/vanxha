@@ -31,3 +31,4 @@ Route::prefix('pedidos')->name('pedidos.')->group(function () {
     Route::put('/{pedido}', 'PedidosController@update');
 });
 
+Route::get('/migrar', 'LinkController@migrate');

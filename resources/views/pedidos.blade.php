@@ -73,14 +73,14 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Descripcion</th>
-                    <th scope="col">Fecha Entrega Estimada</th>
+                    <th scope="col">Entrega</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Costo</th>
                     <th scope="col">Ganancia</th>
                     <th>
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                            +
+                            <i class="fas fa-plus"></i>
                         </button>
                     </th>
                 </tr>
@@ -92,16 +92,15 @@
                             <td>{{$pedido->created_at}}</td>
                             <td>{{$pedido->descripcion}}</td>
                             <td>{{$pedido->fechaEntrega}}</td>
-                        <td>   <span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span> </td>
-                            <td>{{$pedido->precio}}</td>
-                            <td>{{$pedido->costo}}</td>
-                            <td>{{$pedido->ganancia}}</td>
+                            <td><span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span></td>
+                            <td>${{$pedido->precio}}</td>
+                            <td>${{$pedido->costo}}</td>
+                            <td>${{$pedido->ganancia}}</td>
                             <td>
                             <form action="{{ url('pedidos/'. $pedido->id .'/delete')}}" method="post" name="" enctype="multipart/form-data">
-                                
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>
