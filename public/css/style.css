@@ -33,3 +33,18 @@ body, a, p {
 .contenido{
     height: 100vh;
 }
+.profile-img{
+    max-width: 200px;
+}
+.profile-section{
+    margin-top: 100px;
+}
+.profile-container{
+    padding: 50px;
+}
+.empresa-section{
+    margin-top: 100px;
+}
+.empresa-content{
+    padding: 50px;
+}

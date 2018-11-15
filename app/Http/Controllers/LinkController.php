@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Artisan;
+use Auth;
+use App\Pedido;
 
 class LinkController extends Controller
 {
@@ -12,8 +14,20 @@ class LinkController extends Controller
         return view('entregas');
     }
 
-    public function migrate(){
+    public function migrate()
+    {
         $migracion = Artisan::call('migrate');
         dd($migracion);
+    }
+
+    public function empresa()
+    {
+        $pedidos = Pedido::all();
+        return view('empresa')->with('pedidos', $pedidos);
+    }
+
+    public function perfil()
+    {
+        return view('perfil');
     }
 }

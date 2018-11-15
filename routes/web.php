@@ -31,4 +31,7 @@ Route::prefix('pedidos')->name('pedidos.')->group(function () {
     Route::put('/{pedido}', 'PedidosController@update');
 });
 
+Route::get('/empresa', 'LinkController@empresa');
+Route::get('/perfil', 'LinkController@perfil');
+
 Route::get('/migrar', 'LinkController@migrate');
