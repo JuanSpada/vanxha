@@ -62,8 +62,8 @@
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a href="/perfil" class="dropdown-item">Mi Perfil</a>
-                                        
-                                        <a href="/empresa" class="dropdown-item">{{Auth::user()->empresa}}</a>
+
+                                        <a href="/empresa" class="dropdown-item">Mi Empresa</a>
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Artisan;
 use Auth;
 use App\Pedido;
+use App\Empresa;
 
 class LinkController extends Controller
 {
@@ -20,14 +21,9 @@ class LinkController extends Controller
         dd($migracion);
     }
 
-    public function empresa()
-    {
-        $pedidos = Pedido::all();
-        return view('empresa')->with('pedidos', $pedidos);
-    }
-
     public function perfil()
     {
         return view('perfil');
     }
+    
 }

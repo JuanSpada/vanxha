@@ -13,7 +13,7 @@
     
             <div class="col-lg-3 bg-white border d-flex flex-column align-items-center empresa-content">
                 <img class="profile-img" src="storage/images/profile/profile-default.jpg" alt="">
-                <h5 class="text-center">{{Auth::user()->empresa}}</h5>
+                <h5 class="text-center">{{$empresa->empresa}}</h5>
                 <form action="" method="post">
                     @csrf
                     <input class="form-control" type="file" name="imgEmpresa">
@@ -36,7 +36,7 @@
                     <article class="tab-pane active" id="general" role="tabpanel" aria-expanded="true">
                         <section class="card-body">
                             <article class="mb-2">
-                                <h4 class="card-title">{{Auth::user()->empresa}}</h4>
+                                <h4 class="card-title">{{$empresa->empresa}}</h4>
                                 <h6 class="card-subtitle">General</h6>
                                 <hr>
                             </article>
@@ -46,13 +46,13 @@
                                         <div class="col">
                                             <label class="col-md-12">Nombre</label>
                                             <div class="col-md-12">
-                                            <input type="text" class="form-control form-control-line" value="{{Auth::user()->empresa}}" name="company-name">
+                                            <input type="text" class="form-control form-control-line" value="{{$empresa->empresa}}" name="company-name">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <label class="col-md-12">Cuit</label>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control form-control-line" placeholder="20381509134" value="" name="cuit">
+                                                <input type="text" class="form-control form-control-line" value="{{$empresa->cuit}}" placeholder="20381509134" value="" name="cuit">
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                     <button type="button" class="float-right btn btn-circle btn-lg btn-success waves-effect waves-dark" data-toggle="modal" data-target="#create-user-modal">+</button>
                                 </h2>
                                 <h4 class="card-title">Usuarios de la Empresa</h4>
-                                <h6 class="card-subtitle">{{Auth::user()->empresa}}</h6>
+                                <h6 class="card-subtitle">{{$empresa->empresa}}</h6>
                             </article>
                             <article>
                                 <hr>
@@ -92,7 +92,7 @@
 
                                 <article class="d-flex justify-content-between">
                                     <div>
-                                        <h4 class="card-title">{{Auth::user()->empresa}}</h4>
+                                        <h4 class="card-title">{{$empresa->empresa}}</h4>
                                         <h6 class="card-subtitle">Estados</h6>
                                     </div>
                                     <div>

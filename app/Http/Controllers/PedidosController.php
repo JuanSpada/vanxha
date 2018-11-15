@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pedido;
+use App\Empresa;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -15,7 +16,8 @@ class PedidosController extends Controller
      */
     public function index(Request $request)
     {
-        $pedidos = Pedido::where('userId', $request->user()->id)->latest()->paginate(5);
+        $empresa = Empresa::find($request->user()->id);
+        $pedidos = Pedido::where('empresaId', $empresa->id)->latest()->paginate(5);
         return view('/pedidos', compact('pedidos', $pedidos));
     }
 
@@ -50,15 +52,16 @@ class PedidosController extends Controller
             'fechaEntrega' => 'required',
             'precio' => 'required',
         ];
-        $this->validate($request, $validaciones, $mensajes);    
+        $this->validate($request, $validaciones, $mensajes);
+        $empresa = Empresa::find($request->user()->id);    
         $pedido = Pedido::create([
-            'userId' => Auth::user()->id,
+            'userId' => $empresa->id,
             'nombrePersona' => $request->input('nombrePersona'),
             'telefono' => $request->input('telefono'),
             'descripcion' => $request->input('descripcion'),
             'fechaEntrega' => $request->input('fechaEntrega'),
             'precio' => $request->input('precio'),
-        ]);
+            ]);
 
         return redirect('/pedidos')->with('succes', $succes);
     }
