@@ -4,16 +4,14 @@
     <title>Vanxa</title>
 @endsection
 
-
 @section('content')
-
 
 <div class="container-fluid">
         <div class="row d-flex justify-content-around empresa-section">
     
             <div class="col-lg-3 bg-white border d-flex flex-column align-items-center empresa-content">
                 <img class="profile-img" src="storage/images/profile/profile-default.jpg" alt="">
-                <h5 class="text-center">{{$empresa->empresa}}</h5>
+                <h5 class="text-center">{{$empresaYUsers['empresa']->empresa}}</h5>
                 <form action="" method="post">
                     @csrf
                     @method('put')
@@ -37,7 +35,7 @@
                     <article class="tab-pane active" id="general" role="tabpanel" aria-expanded="true">
                         <section class="card-body">
                             <article class="mb-2">
-                                <h4 class="card-title">{{$empresa->empresa}}</h4>
+                                <h4 class="card-title">{{$empresaYUsers['empresa']->empresa}}</h4>
                                 <h6 class="card-subtitle">General</h6>
                                 <hr>
                             </article>
@@ -49,13 +47,13 @@
                                         <div class="col">
                                             <label class="col-md-12">Nombre de la Empresa:</label>
                                             <div class="col-md-12">
-                                            <input type="text" class="form-control form-control-line" value="{{$empresa->empresa}}" name="nombreEmpresa">
+                                            <input type="text" class="form-control form-control-line" value="{{$empresaYUsers['empresa']->empresa}}" name="nombreEmpresa">
                                             </div>
                                         </div>
                                         <div class="col">
                                             <label class="col-md-12">Cuit:</label>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control form-control-line" placeholder="20381509134" value="{{$empresa->quit}}" name="quit">
+                                                <input type="text" class="form-control form-control-line" placeholder="20381509134" value="{{$empresaYUsers['empresa']->quit}}" name="quit">
                                             </div>
                                         </div>
                                     </div>
@@ -76,14 +74,36 @@
                                     <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#addUserModal">+</button>
                                 </h2>
                                 <h4 class="card-title">Usuarios de la Empresa</h4>
-                                <h6 class="card-subtitle">{{$empresa->empresa}}</h6>
+                                <h6 class="card-subtitle">{{$empresaYUsers['empresa']->empresa}}</h6>
                             </article>
                             <article>
                                 <hr>
                                 <div class="message-box contact-box">
                                     <div class="message-widget contact-widget">
                                          
-                                        <h5>{{Auth::user()->name}}</h5>
+                                        <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Usuarios</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($empresaYUsers['users'] as $user)
+                                                        <tr>
+                                                            <td>{{$user->name}}</td>
+                                                            <th>
+                                                                <form action="{{ url('empresa/'. $user->id .'/delete')}}" method="post" name="" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                                                </form>
+                                                            </th>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+
                                     </div>
                                 </div>
                             </article>
@@ -134,7 +154,7 @@
 
                                 <article class="d-flex justify-content-between">
                                     <div>
-                                        <h4 class="card-title">{{$empresa->empresa}}</h4>
+                                        <h4 class="card-title">{{$empresaYUsers['empresa']->empresa}}</h4>
                                         <h6 class="card-subtitle">Estados</h6>
                                     </div>
                                     <div>

@@ -97,7 +97,7 @@
                             <td>${{$pedido->costo}}</td>
                             <td>${{$pedido->ganancia}}</td>
                             <td>
-                            <form action="{{ url('pedidos/'. $pedido->id .'/delete')}}" method="post" name="" enctype="multipart/form-data">
+                                <form action="{{ url('pedidos/'. $pedido->id .'/delete')}}" method="post" name="" enctype="multipart/form-data">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>

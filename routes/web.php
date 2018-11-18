@@ -35,6 +35,7 @@ Route::prefix('empresa')->name('empresa.')->group(function () {
     Route::get('/', 'EmpresasController@index');
     Route::put('/', 'EmpresasController@edit');
     Route::post('/', 'EmpresasController@addUser')->name('addUser');
+    Route::delete('/{id}/delete', 'EmpresasController@deleteUser')->name('deleteUser');
 }) ;
 
 

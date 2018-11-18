@@ -20,7 +20,15 @@ class EmpresasController extends Controller
     public function index(Request $request)
     {
         $empresa = Empresa::find($request->user()->empresaId);
-        return view('empresa')->with('empresa', $empresa);
+        $users = User::where([
+            ['empresaId','=', $empresa->id],
+            ['id', '!=', Auth::user()->id],
+            ])->get();
+        $empresaYUsers = [
+            'empresa' => $empresa,
+            'users' => $users,
+        ];
+        return view('empresa')->with('empresaYUsers', $empresaYUsers);
     }
 
     /**
@@ -106,4 +114,10 @@ class EmpresasController extends Controller
         return redirect('empresa');
     }
 
+    public function deleteUser($id)
+    {
+        User::find($id)->delete();
+    
+        return redirect('empresa');
+    }
 }
