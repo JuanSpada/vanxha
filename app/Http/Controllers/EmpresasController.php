@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Artisan;
 use Auth;
+use Hash;
+use App\User;
 use App\Pedido;
 use App\Empresa;
 
@@ -17,8 +19,8 @@ class EmpresasController extends Controller
      */
     public function index(Request $request)
     {
-        $empresa = Empresa::find($request->user()->id);
-        return view('/empresa')->with('empresa', $empresa);
+        $empresa = Empresa::find($request->user()->empresaId);
+        return view('empresa')->with('empresa', $empresa);
     }
 
     /**
@@ -51,9 +53,7 @@ class EmpresasController extends Controller
      */
     public function show($id)
     {
-        $empresa = Empresa::find($id);
-        dd($empresa);
-        return view('empresa');
+        
     }
 
     /**
@@ -62,9 +62,13 @@ class EmpresasController extends Controller
      * @param  \App\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
-
+        $empresa = Empresa::find($request->user()->empresaId);
+        $empresa->empresa = $request->input('nombreEmpresa');
+        $empresa->quit = $request->input('quit');
+        $empresa->save();
+        return redirect('empresa');
     }
 
     /**
@@ -90,5 +94,16 @@ class EmpresasController extends Controller
 
     }
 
+    public function addUser(Request $request)
+    {
+        $empresa = Empresa::find($request->user()->empresaId);
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'empresaId' => $empresa->id,
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect('empresa');
+    }
 
 }

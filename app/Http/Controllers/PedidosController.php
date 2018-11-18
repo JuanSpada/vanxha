@@ -16,7 +16,7 @@ class PedidosController extends Controller
      */
     public function index(Request $request)
     {
-        $empresa = Empresa::find($request->user()->id);
+        $empresa = Empresa::find($request->user()->empresaId);
         $pedidos = Pedido::where('empresaId', $empresa->id)->latest()->paginate(5);
         return view('/pedidos', compact('pedidos', $pedidos));
     }

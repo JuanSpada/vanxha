@@ -16,6 +16,7 @@
                 <h5 class="text-center">{{$empresa->empresa}}</h5>
                 <form action="" method="post">
                     @csrf
+                    @method('put')
                     <input class="form-control" type="file" name="imgEmpresa">
                     <p>Subir foto de la empresa</p>
                     <button class="btn btn-primary" type="submit">Subir</button>
@@ -41,24 +42,26 @@
                                 <hr>
                             </article>
                             <article>
-                                <form class="form-horizontal form-material" action="http://makeitsmart.com.ar/crm/companies/2" method="post">
+                                <form class="form-horizontal form-material" action="{{ route('empresa.') }}" method="post">
+                                    @csrf
+                                    @method('put')
                                     <div class="form-group row">
                                         <div class="col">
-                                            <label class="col-md-12">Nombre</label>
+                                            <label class="col-md-12">Nombre de la Empresa:</label>
                                             <div class="col-md-12">
-                                            <input type="text" class="form-control form-control-line" value="{{$empresa->empresa}}" name="company-name">
+                                            <input type="text" class="form-control form-control-line" value="{{$empresa->empresa}}" name="nombreEmpresa">
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <label class="col-md-12">Cuit</label>
+                                            <label class="col-md-12">Cuit:</label>
                                             <div class="col-md-12">
-                                                <input type="text" class="form-control form-control-line" value="{{$empresa->cuit}}" placeholder="20381509134" value="" name="cuit">
+                                                <input type="text" class="form-control form-control-line" placeholder="20381509134" value="{{$empresa->quit}}" name="quit">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success" type="submit" name="edit-company">Actualizar empresa</button>
+                                            <button class="btn btn-success" type="submit">Actualizar empresa</button>
                                         </div>
                                     </div>
                                 </form>
@@ -70,7 +73,7 @@
                         <section class="card-body">
                             <article class="mb-4">
                                 <h2 class="add-ct-btn">
-                                    <button type="button" class="float-right btn btn-circle btn-lg btn-success waves-effect waves-dark" data-toggle="modal" data-target="#create-user-modal">+</button>
+                                    <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#addUserModal">+</button>
                                 </h2>
                                 <h4 class="card-title">Usuarios de la Empresa</h4>
                                 <h6 class="card-subtitle">{{$empresa->empresa}}</h6>
@@ -86,8 +89,47 @@
                             </article>
                         </section>
                     </article>
+
+                    <!-- Modal de Agregar Usuario-->
+            
+                    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <form action="{{ route('empresa.addUser') }}" method="post">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="name">Nombre:</label>
+                                            <input class="form-control" type="text" name="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input class="form-control" type="email" name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Contraseña</label>
+                                            <input class="form-control" type="password" name="password">
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                                    </form>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
     
-                    <article class="tab-pane active" id="estados" role="tabpanel" aria-expanded="true">
+                    <article class="tab-pane" id="estados" role="tabpanel" aria-expanded="true">
                             <section class="card-body">
 
                                 <article class="d-flex justify-content-between">
@@ -97,18 +139,18 @@
                                     </div>
                                     <div>
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#estadosModal">
                                             +
                                         </button>
                                     </div>
                                 </article>
                                 <hr>
                                 <article>
-                                    <!-- Modal -->
+                                    <!-- Modal de Estados-->
                                     <div>
                                         Acá va el listado de los estados...
                                     </div>
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="estadosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">

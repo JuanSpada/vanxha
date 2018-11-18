@@ -17,7 +17,7 @@ class CreateEmpresasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('empresa');
-            $table->integer('cuit')->nullable();
+            $table->string('quit')->nullable();
         });
     }
 
