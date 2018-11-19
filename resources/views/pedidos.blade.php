@@ -7,7 +7,6 @@
 
 @section('content')
 
-
     <div class="container-fluid">
         <div class="col-12 tabla-productos border bg-white">
             <div class="col bg-white d-flex justify-content-end">
@@ -17,10 +16,14 @@
                     </div>
                     <div class="form-group">
                         <select name="estado" class="form-control">
-                                <option selected disabled>Elegir Estado</option>
-                            @foreach (App\Estado::all() as $estado)
+                            <option selected disabled>Elegir Estado</option>
+                            
+                            @foreach ($pedidosYEstados['estados'] as $estado)
+
                                 <option value="{{$estado->id}}">{{$estado->estado}}</option>
+
                             @endforeach
+
                         </select>
                         
                     </div>
@@ -104,7 +107,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pedidos as $pedido)
+                    @foreach ($pedidosYEstados['pedidos'] as $pedido)
                         <tr>
                             <td><a href="/pedidos/{{$pedido->id}}">{{$pedido->nombrePersona}}</td></a>
                             <td>{{$pedido->created_at}}</td>
@@ -133,8 +136,8 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $pedidos->appends(['s' => $s])->links() }}
-            @if (count($pedidos) == 0)  
+            {{ $pedidosYEstados['pedidos']->appends(['s' => $s])->links() }}
+            @if (count($pedidosYEstados['pedidos']) == 0)  
                 <p class="text-center">Todavía no tenes pedidos. <a class="badge badge-primary" href="" data-toggle="modal" data-target="#cargarPedidoModal">Agregar Pedido</a></p>
                 <hr>
             @endif

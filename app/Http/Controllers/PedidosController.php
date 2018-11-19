@@ -17,7 +17,7 @@ class PedidosController extends Controller
      */
     public function index(Request $request)
     {
-        $empresa = Empresa::find($request->user()->empresaId);
+        $empresaId = Empresa::find($request->user()->empresaId)->id;
 
         $s = $request->input('s');
         $e = $request->input('estado');
@@ -25,10 +25,17 @@ class PedidosController extends Controller
         // $pedidos = Pedido::where('empresaId', $empresa->id)->latest()->paginate(6);
 
         $pedidos = Pedido::where([
-            ['empresaId', $empresa->id],
+            ['empresaId', $empresaId],
         ])->latest()->search($s)->estado($e)->paginate(6);
 
-        return view('/pedidos', compact('pedidos', 's'));
+        $estados = Estado::where('empresaId', $empresaId)->get();
+
+        $pedidosYEstados = [
+            'pedidos' => $pedidos,
+            'estados' => $estados,
+        ];
+
+        return view('/pedidos', compact('pedidosYEstados', 's'));
     }
 
     /**

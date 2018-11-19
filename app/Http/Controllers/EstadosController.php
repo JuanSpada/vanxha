@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Estado;
 use App\Empresa;
+use App\Pedido;
 
 class EstadosController extends Controller
 {
@@ -13,9 +14,12 @@ class EstadosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
-        $estados = Estado::all();
+        $empresa = Empresa::find($request->user()->empresaId);
+        $estados = Estado::where([
+            ['empresaId', $empresa->id],
+        ])->get();
         return view('configuracion')->with('estados', $estados);
     }
 
