@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Pedido;
+use App\Empresa;
+use Auth;
 
 class InformesController extends Controller
 {
@@ -12,22 +15,27 @@ class InformesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pedidos = Pedido::all();
+        $empresaId = Empresa::find($request->user()->empresaId)->id;
+    
+        $pedidos = Pedido::where('empresaId', $empresaId)->get();
+
         $ingresosBrutos = 0;
         foreach ($pedidos as $pedido) {
             $ingresosBrutos = $ingresosBrutos + $pedido->precio;
         }
-        $pedidos = Pedido::all();
+
         $costoTotal = 0;
         foreach ($pedidos as $pedido) {
             $costoTotal = $costoTotal + $pedido->costo;
         }
+
         $ganancia = 0;
         foreach ($pedidos as $pedido) {
             $ganancia = $ganancia + $pedido->ganancia;
         }
+        
         $ingresos = [
             'ingresosBrutos' => $ingresosBrutos,
             'costoTotal' => $costoTotal,
