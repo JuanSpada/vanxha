@@ -35,7 +35,7 @@
                     <form action="" method="post">
                         @csrf
                         @method('put')
-                        <button type="submit"><i class="fas fa-sync-alt"></i></button>
+                        <button class="btn btn-success" type="submit"><i class="fas fa-sync-alt"></i> Calcular Ganancia</button>
                     </form>
                 </div>
                 <div class="col-lg-4 border-left">
@@ -43,12 +43,12 @@
                     <p>Estado del Pedido:</p>
                     {{-- <span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span> --}}
                     @foreach (App\Estado::all() as $estado)
-                                    @if ($pedido->estado == $estado->id)
-                                        <span class="badge {{$estado->badge}}">
-                                            {{$estado->estado}}
-                                        </span>
-                                    @endif
-                                @endforeach
+                        @if ($pedido->estado == $estado->id)
+                            <span class="badge {{$estado->badge}}">
+                                {{$estado->estado}}
+                            </span>
+                        @endif
+                    @endforeach
                     <p>Fecha de Entrega:</p>
                     <p class="badge badge-dark">{{$pedido->fechaEntrega}}</p><br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
