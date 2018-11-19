@@ -9,7 +9,25 @@
 
 
     <div class="container-fluid">
-        <div class="col-12 tabla-productos">
+        <div class="col-12 tabla-productos border bg-white">
+            <div class="col bg-white d-flex justify-content-end">
+                <form action="{{ route('pedidos.index') }}" class="form-inline" method="get">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="buscar" name="s" value="{{ isset($s) ? $s : '' }}">
+                    </div>
+                    <div class="form-group">
+                        <select name="estado" class="form-control">
+                                <option selected disabled>Elegir Estado</option>
+                            @foreach (App\Estado::all() as $estado)
+                                <option value="{{$estado->id}}">{{$estado->estado}}</option>
+                            @endforeach
+                        </select>
+                        
+                    </div>
+                    <button type="stubmit" class="btn btn-success">Buscar</button>
+
+                </form>
+            </div>
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -67,7 +85,7 @@
             @endif
 
             
-            <table class="table border bg-white">
+            <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">Nombre</th>
@@ -115,7 +133,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $pedidos->links() }}
+            {{ $pedidos->appends(['s' => $s])->links() }}
         
             
         </div>

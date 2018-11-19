@@ -29,7 +29,7 @@ Route::prefix('configuracion')->name('configuracion.')->group(function() {
 });
 
 Route::prefix('pedidos')->name('pedidos.')->group(function() {
-    Route::get('/', 'PedidosController@index');
+    Route::get('/', 'PedidosController@index')->name('index');
     Route::get('/calendar', 'PedidosController@calendar')->name('calendar');
     Route::post('/', 'PedidosController@store');
     Route::get('/{pedido}', 'PedidosController@show');
@@ -49,5 +49,5 @@ Route::prefix('empresa')->name('empresa.')->group(function() {
 Route::get('/perfil', 'LinkController@perfil');
 Route::post('/perfil', 'PerfilController@update');
 
-
-Route::get('/migrar', 'LinkController@migrate');
+Route::get('/migrate', 'LinkController@migrate');
+Route::get('/migraterefresh', 'LinkController@migrateRefresh');

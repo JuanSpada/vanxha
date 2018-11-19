@@ -21,6 +21,12 @@ class LinkController extends Controller
         return dd('Migración lista');
     }
 
+    public function migrateRefresh()
+    {
+        $migracion = Artisan::call('migrate:refresh');
+        return dd('Migración lista');
+    }
+
     public function perfil()
     {
         return view('perfil');
