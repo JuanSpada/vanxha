@@ -12,6 +12,7 @@ $factory->define(App\Pedido::class, function (Faker $faker) {
         'fechaEntrega' => $faker-> dateTimeBetween($startDate = '-1 month', $endDate = 'now'),
         'descripcion' => $faker->paragraph(1),
         'precio' => $faker->numberBetween(5000, 30000),
+        'costo' => $faker->numberBetween(5000, 15000),
         'estado' => $faker->numberBetween(1, 3),
     ];
 });

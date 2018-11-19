@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/informe', 'InformesController@index')->name('home');
+Route::post('/informe', 'InformesController@ganancia');
 Route::get('/entregas', 'LinkController@entregas');
 Route::get('/entregas/editar', 'PedidosController@editarcalendar');
 

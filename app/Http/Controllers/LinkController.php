@@ -18,7 +18,7 @@ class LinkController extends Controller
     public function migrate()
     {
         $migracion = Artisan::call('migrate');
-        dd($migracion);
+        return dd('Migración lista');
     }
 
     public function perfil()

@@ -8,8 +8,8 @@
 @section('content')
 
 
-    <div class="container">
-        <div class="col tabla-productos">
+    <div class="container-fluid">
+        <div class="col-12 tabla-productos">
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -117,9 +117,7 @@
             </table>
             {{ $pedidos->links() }}
         
-            <div class="col border bg-white">
-                <p>Todavía no tenes pedidos</p>
-            </div>
+            
         </div>
 
     </div>
