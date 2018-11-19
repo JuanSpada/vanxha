@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Empresa;
+use App\Estado;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -68,6 +69,23 @@ class RegisterController extends Controller
         $empresa = Empresa::create([
             'empresa' => $data['empresa'],
         ]);
+
+        $estado = Estado::create([
+            'estado' => 'Nuevo',
+            'badge' => 'badge-primary',
+            'empresaId' => $empresa->id,
+        ]);
+        $estado = Estado::create([
+            'estado' => 'En Taller',
+            'badge' => 'badge-warning',
+            'empresaId' => $empresa->id,
+        ]);
+        $estado = Estado::create([
+            'estado' => 'Entregado',
+            'badge' => 'badge-success',
+            'empresaId' => $empresa->id,
+        ]);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

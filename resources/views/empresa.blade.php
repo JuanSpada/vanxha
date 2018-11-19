@@ -26,17 +26,15 @@
                 <ul class="nav nav-tabs profile-tab" id="myTabs" role="tablist">
                     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#general" role="tab" aria-selected="true" aria-expanded="true">General</a> </li>
                     <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#usuarios" role="tab" aria-selected="true" aria-expanded="false">Usuarios</a> </li>
-                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#estados" role="tab" aria-selected="true" aria-expanded="false">Estados</a> </li>
-                    
                 </ul>
                 <!-- Tab panes -->
                 <section class="tab-content">
-                    <!-- usuarios -->
+                    <!-- EMPRESA -->
                     <article class="tab-pane active" id="general" role="tabpanel" aria-expanded="true">
                         <section class="card-body">
                             <article class="mb-2">
                                 <h4 class="card-title">{{$empresaYUsers['empresa']->empresa}}</h4>
-                                <h6 class="card-subtitle">General</h6>
+                                <h6 class="card-subtitle">Configuración de la Empresa</h6>
                                 <hr>
                             </article>
                             <article>
@@ -66,15 +64,14 @@
                             </article>
                         </section>
                     </article>
-    
+                    <!-- USUARIOS DE LA EMPRESA -->
                     <article class="tab-pane" id="usuarios" role="tabpanel" aria-expanded="false">
                         <section class="card-body">
                             <article class="mb-4">
-                                <h2 class="add-ct-btn">
-                                    <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#addUserModal">+</button>
-                                </h2>
-                                <h4 class="card-title">Usuarios de la Empresa</h4>
-                                <h6 class="card-subtitle">{{$empresaYUsers['empresa']->empresa}}</h6>
+                                
+                                <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#addUserModal">+</button>
+                                <h4 class="card-title">{{$empresaYUsers['empresa']->empresa}}</h4>
+                                <h6 class="card-subtitle">Agrega o elimina los usuarios de {{$empresaYUsers['empresa']->empresa}}</h6>
                             </article>
                             <article>
                                 <hr>
@@ -84,7 +81,8 @@
                                         <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Usuarios</th>
+                                                        <th scope="col">Nombre</th>
+                                                        <th scope="col">Apellido</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -92,6 +90,7 @@
                                                     @foreach ($empresaYUsers['users'] as $user)
                                                         <tr>
                                                             <td>{{$user->name}}</td>
+                                                            <td>{{$user->email}}</td>
                                                             <th>
                                                                 <form action="{{ url('empresa/'. $user->id .'/delete')}}" method="post" name="" enctype="multipart/form-data">
                                                                     @csrf
@@ -147,52 +146,6 @@
                         </div>
                         </div>
                     </div>
-
-    
-                    <article class="tab-pane" id="estados" role="tabpanel" aria-expanded="true">
-                            <section class="card-body">
-
-                                <article class="d-flex justify-content-between">
-                                    <div>
-                                        <h4 class="card-title">{{$empresaYUsers['empresa']->empresa}}</h4>
-                                        <h6 class="card-subtitle">Estados</h6>
-                                    </div>
-                                    <div>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#estadosModal">
-                                            +
-                                        </button>
-                                    </div>
-                                </article>
-                                <hr>
-                                <article>
-                                    <!-- Modal de Estados-->
-                                    <div>
-                                        Acá va el listado de los estados...
-                                    </div>
-                                    <div class="modal fade" id="estadosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Cargar Estado</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                            </div>
-                                            <div class="modal-body">
-                                            ...
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <button type="button" class="btn btn-primary">Guardar</button>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </article>
-
-                            </section>
-                        </article>
                 </section>
             </div>
         </div>

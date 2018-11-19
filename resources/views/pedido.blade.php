@@ -41,7 +41,14 @@
                 <div class="col-lg-4 border-left">
                     <p>Costo: ${{$pedido->costo}}</p>
                     <p>Estado del Pedido:</p>
-                    <span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span>
+                    {{-- <span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span> --}}
+                    @foreach (App\Estado::all() as $estado)
+                                    @if ($pedido->estado == $estado->id)
+                                        <span class="badge {{$estado->badge}}">
+                                            {{$estado->estado}}
+                                        </span>
+                                    @endif
+                                @endforeach
                     <p>Fecha de Entrega:</p>
                     <p class="badge badge-dark">{{$pedido->fechaEntrega}}</p><br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

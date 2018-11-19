@@ -22,19 +22,12 @@
 
         <div class="col-lg-6 bg-white border profile-container">
                 <h4>Editar Perfil:</h4>
-                <br>
+                <hr>
 
-                <div class="form-row">
-
-
-                    <div class="form-group col-md-6">
-                        <input class="form-control" type="text" value="{{Auth::user()->name}}">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input class="form-control" type="text" value="{{Auth::user()->empresa}}">
-                    </div>
-
+                <div class="form-group">
+                    <input class="form-control" type="text" value="{{Auth::user()->name}}">
                 </div>
+                    
 
                 <div class="form-group">
                     <input class="form-control" type="email" value="{{Auth::user()->email}}">

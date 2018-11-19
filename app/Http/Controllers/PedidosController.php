@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pedido;
 use App\Empresa;
+use App\Estado;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -55,7 +56,7 @@ class PedidosController extends Controller
         $this->validate($request, $validaciones, $mensajes);
         $empresa = Empresa::find($request->user()->id);    
         $pedido = Pedido::create([
-            'userId' => $empresa->id,
+            'empresaId' => $empresa->id,
             'nombrePersona' => $request->input('nombrePersona'),
             'telefono' => $request->input('telefono'),
             'descripcion' => $request->input('descripcion'),
@@ -150,5 +151,3 @@ class PedidosController extends Controller
         $pedido->save();
     }
 }
-
-

@@ -21,7 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/entregas', 'LinkController@entregas');
 Route::get('/entregas/editar', 'PedidosController@editarcalendar');
 
-Route::prefix('pedidos')->name('pedidos.')->group(function () {
+Route::prefix('configuracion')->name('configuracion.')->group(function() {
+    Route::get('/', 'EstadosController@index');
+    Route::post('/', 'EstadosController@store')->name('cargarEstado');
+    Route::delete('/{estado}/delete', 'EstadosController@destroy');
+});
+
+Route::prefix('pedidos')->name('pedidos.')->group(function() {
     Route::get('/', 'PedidosController@index');
     Route::get('/calendar', 'PedidosController@calendar')->name('calendar');
     Route::post('/', 'PedidosController@store');
@@ -31,7 +37,7 @@ Route::prefix('pedidos')->name('pedidos.')->group(function () {
     Route::put('/{pedido}', 'PedidosController@update');
 });
 
-Route::prefix('empresa')->name('empresa.')->group(function () {
+Route::prefix('empresa')->name('empresa.')->group(function() {
     Route::get('/', 'EmpresasController@index');
     Route::put('/', 'EmpresasController@edit');
     Route::post('/', 'EmpresasController@addUser')->name('addUser');

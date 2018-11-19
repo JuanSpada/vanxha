@@ -92,7 +92,15 @@
                             <td>{{$pedido->created_at}}</td>
                             <td>{{$pedido->descripcion}}</td>
                             <td>{{$pedido->fechaEntrega}}</td>
-                            <td><span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span></td>
+                            <td>
+                                @foreach (App\Estado::all() as $estado)
+                                    @if ($pedido->estado == $estado->id)
+                                        <span class="badge {{$estado->badge}}">
+                                            {{$estado->estado}}
+                                        </span>
+                                    @endif
+                                @endforeach
+                            </td>
                             <td>${{$pedido->precio}}</td>
                             <td>${{$pedido->costo}}</td>
                             <td>${{$pedido->ganancia}}</td>

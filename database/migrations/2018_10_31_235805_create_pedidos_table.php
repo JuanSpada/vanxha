@@ -21,10 +21,10 @@ class CreatePedidosTable extends Migration
             $table->string('telefono');
             $table->text('descripcion');
             $table->date('fechaEntrega');
-            $table->integer('estado')->default(0);
+            $table->integer('estado')->default(1);
             $table->integer('precio');
-            $table->integer('costo')->default('0');
-            $table->integer('ganancia')->default('0');
+            $table->integer('costo')->default(0);
+            $table->integer('ganancia')->default(0);
         });
     }
 

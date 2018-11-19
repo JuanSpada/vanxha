@@ -65,6 +65,8 @@
 
                                         <a href="/empresa" class="dropdown-item">Mi Empresa</a>
 
+                                        <a href="/configuracion" class="dropdown-item">Configuración</a>
+
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
