@@ -10,13 +10,12 @@
 
 <div class="container">
     <div class="row d-flex justify-content-around profile-section">
-
         <div class="col-lg-4 bg-white border d-flex flex-column align-items-center profile-container">
-            <img class="profile-img" src="storage/images/profile/profile-default.jpg" alt="">
+        <img class="profile-img" src="/storage/avatars/{{Auth::user()->avatar}}" alt="">
             <h5 class="text-center">{{Auth::user()->name}}</h5>
-            <form action="" method="post">
+            <form action="/perfil" method="post" enctype="multipart/form-data">
                 @csrf
-            <input class="form-control" type="file" name="imgPerfil">
+            <input class="form-control" type="file" name="avatar">
             <p>Subir foto de perfil</p>
         </div>
 
@@ -25,12 +24,12 @@
                 <hr>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" value="{{Auth::user()->name}}">
+                    <input name="name" class="form-control" type="text" value="{{Auth::user()->name}}">
                 </div>
                     
 
                 <div class="form-group">
-                    <input class="form-control" type="email" value="{{Auth::user()->email}}">
+                    <input name="email" class="form-control" type="email" value="{{Auth::user()->email}}">
                 </div>
 
                 <button class="btn btn-primary" type="submit">Actualizar Perfil</button>

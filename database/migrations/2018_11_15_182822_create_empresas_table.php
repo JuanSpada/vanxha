@@ -18,6 +18,7 @@ class CreateEmpresasTable extends Migration
             $table->timestamps();
             $table->string('empresa');
             $table->string('quit')->nullable();
+            $table->string('avatarEmpresa')->default('profile-default.jpg');
         });
     }
 

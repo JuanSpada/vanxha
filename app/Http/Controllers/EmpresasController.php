@@ -86,9 +86,28 @@ class EmpresasController extends Controller
      * @param  \App\Pedidos  $pedidos
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
+        $request->validate([
+            'avatarEmpresa' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
+        $empresa = Empresa::find($request->user()->empresaId);
+        $empresa->empresa = $request->input('nombreEmpresa');
+        $empresa->quit = $request->input('quit');
+        
+        if($request->has('avatarEmpresa')) {
+            $avatarName = $empresa->id.'_avatar'.time().'.'.request()->avatarEmpresa->getClientOriginalExtension();
+            $request->avatarEmpresa->storeAs('avatars',$avatarName);
+            $empresa->avatarEmpresa = $avatarName;
+            $empresa->save();
+            return back()->with('success','You have successfully upload image.');
+        }
+        
+        $empresa->save();
+        
+
+        return redirect('/empresa');
     }
 
     /**

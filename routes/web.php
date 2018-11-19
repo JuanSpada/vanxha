@@ -39,13 +39,14 @@ Route::prefix('pedidos')->name('pedidos.')->group(function() {
 
 Route::prefix('empresa')->name('empresa.')->group(function() {
     Route::get('/', 'EmpresasController@index');
-    Route::put('/', 'EmpresasController@edit');
+    Route::put('/', 'EmpresasController@update');
     Route::post('/', 'EmpresasController@addUser')->name('addUser');
     Route::delete('/{id}/delete', 'EmpresasController@deleteUser')->name('deleteUser');
 }) ;
 
 
 Route::get('/perfil', 'LinkController@perfil');
+Route::post('/perfil', 'PerfilController@update');
 
 
 Route::get('/migrar', 'LinkController@migrate');

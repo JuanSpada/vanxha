@@ -10,15 +10,14 @@
         <div class="row d-flex justify-content-around empresa-section">
     
             <div class="col-lg-3 bg-white border d-flex flex-column align-items-center empresa-content">
-                <img class="profile-img" src="storage/images/profile/profile-default.jpg" alt="">
+                
+            <img class="profile-img" src="storage/avatars/{{$empresaYUsers['empresa']->avatarEmpresa}}" alt="">
                 <h5 class="text-center">{{$empresaYUsers['empresa']->empresa}}</h5>
-                <form action="" method="post">
+                <form class="form-horizontal form-material" action="{{ route('empresa.') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    <input class="form-control" type="file" name="imgEmpresa">
+                    <input class="form-control" type="file" name="avatarEmpresa">
                     <p>Subir foto de la empresa</p>
-                    <button class="btn btn-primary" type="submit">Subir</button>
-                </form>
             </div>
     
             <div class="card col-lg-8 bg-white border profile-container">
@@ -38,9 +37,7 @@
                                 <hr>
                             </article>
                             <article>
-                                <form class="form-horizontal form-material" action="{{ route('empresa.') }}" method="post">
-                                    @csrf
-                                    @method('put')
+                                
                                     <div class="form-group row">
                                         <div class="col">
                                             <label class="col-md-12">Nombre de la Empresa:</label>
