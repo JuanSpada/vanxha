@@ -30,7 +30,7 @@
             </div>
             
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="cargarPedidoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -97,7 +97,7 @@
                     <th scope="col">Costo</th>
                     <th scope="col">Ganancia</th>
                     <th>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cargarPedidoModal">
                             <i class="fas fa-plus"></i>
                         </button>
                     </th>
@@ -134,8 +134,10 @@
                 </tbody>
             </table>
             {{ $pedidos->appends(['s' => $s])->links() }}
-        
-            
+            @if (count($pedidos) == 0)  
+                <p class="text-center">Todavía no tenes pedidos. <a class="badge badge-primary" href="" data-toggle="modal" data-target="#cargarPedidoModal">Agregar Pedido</a></p>
+                <hr>
+            @endif
         </div>
 
     </div>
