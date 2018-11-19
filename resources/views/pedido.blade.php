@@ -86,9 +86,9 @@
                             <div class="form-group">
                                 <label for="estado">Estado:</label>
                                 <select class="form-control" name="estado">
-                                    <option value="0" selected>Nuevo</option>
-                                    <option value="1">En Taller</option>
-                                    <option value="2">Entregado</option>
+                                    @foreach (App\Estado::all() as $estado)
+                                        <option value="{{$estado->id}}">{{$estado->estado}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
