@@ -49,7 +49,6 @@ class EstadosController extends Controller
             'empresaId' => $empresa->id,
         ]);
 
-        $estados = Estado::all();
         return view('configuracion')->with('estados', $estados);
     }
 
