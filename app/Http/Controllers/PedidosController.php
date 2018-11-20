@@ -166,4 +166,15 @@ class PedidosController extends Controller
         $pedido->fechaEntrega = $request['fechaEntrega'];
         $pedido->save();
     }
+
+    public function fotoPedido (Request $request, $id)
+    {
+        $pedido = Pedido::find($id);
+
+        $nombreFoto = $pedido->id.'_fotoPedido'.time().'.'.request()->foto->getClientOriginalExtension();
+        $request->foto->storeAs('fotoPedidos',$nombreFoto);
+        $pedido->foto = $nombreFoto;
+        $pedido->save();
+        return back()->with('success','You have successfully upload image.');
+    }
 }

@@ -29,13 +29,24 @@
             <hr>
             <div class="row justify-content-center">
 
-                <div class="col-lg-8 d-flex flex-column justify-content-around">
+                <div class="col-lg-4 d-flex flex-column justify-content-around">
                     <p>Descripción: <br>{{$pedido->descripcion}}</p>
                     <p>Ganancia: ${{$pedido->ganancia}}</p>
                     <form action="" method="post">
                         @csrf
                         @method('put')
                         <button class="btn btn-success" type="submit"><i class="fas fa-sync-alt"></i> Calcular Ganancia</button>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <img class="foto-pedido" src="/storage/fotoPedidos/{{$pedido->foto}}" alt="">
+                    <form action="{{ route('pedidos.foto', $pedido->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('patch')
+                        <div class="form-group">
+                            <input class="form-control" type="file" name="foto">
+                        </div>
+                        <button class="btn" type="submit">Subir Foto</button>
                     </form>
                 </div>
                 <div class="col-lg-4 border-left">

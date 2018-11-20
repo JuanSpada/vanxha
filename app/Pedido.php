@@ -8,6 +8,7 @@ class Pedido extends Model
 {
     protected $guarded = [];
 
+    // QUERYS SCOPE
     public function scopeSearch($query, $s)
     {
         return $query->where('nombrePersona', 'LIKE', "%$s%");

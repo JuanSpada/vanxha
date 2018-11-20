@@ -10,26 +10,29 @@
     <div class="container-fluid">
         <div class="col-12 tabla-productos border bg-white">
             <div class="col bg-white d-flex justify-content-end">
-                <form action="{{ route('pedidos.index') }}" class="form-inline" method="get">
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="buscar" name="s" value="{{ isset($s) ? $s : '' }}">
-                    </div>
-                    <div class="form-group">
-                        <select name="estado" class="form-control">
-                            <option selected disabled>Elegir Estado</option>
+                <div class="row search">
+
+                    <form action="{{ route('pedidos.index') }}" class="form-inline" method="get">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="buscar" name="s" value="{{ isset($s) ? $s : '' }}">
+                        </div>
+                        <div class="form-group">
+                            <select name="estado" class="form-control">
+                                <option selected disabled>Elegir Estado</option>
+                                
+                                @foreach ($pedidosYEstados['estados'] as $estado)
+    
+                                    <option value="{{$estado->id}}">{{$estado->estado}}</option>
+    
+                                @endforeach
+    
+                            </select>
                             
-                            @foreach ($pedidosYEstados['estados'] as $estado)
-
-                                <option value="{{$estado->id}}">{{$estado->estado}}</option>
-
-                            @endforeach
-
-                        </select>
-                        
-                    </div>
-                    <button type="stubmit" class="btn btn-success">Buscar</button>
-
-                </form>
+                        </div>
+                        <button type="stubmit" class="btn btn-success">Buscar</button>
+    
+                    </form>
+                </div>
             </div>
             
             <!-- Modal -->

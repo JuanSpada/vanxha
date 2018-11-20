@@ -33,6 +33,7 @@ Route::prefix('pedidos')->name('pedidos.')->group(function() {
     Route::get('/calendar', 'PedidosController@calendar')->name('calendar');
     Route::post('/', 'PedidosController@store');
     Route::get('/{pedido}', 'PedidosController@show');
+    Route::patch('/{pedido}', 'PedidosController@fotoPedido')->name('foto');
     Route::delete('/{pedido}/delete', 'PedidosController@destroy');
     Route::post('/{pedido}', 'PedidosController@edit');
     Route::put('/{pedido}', 'PedidosController@update');
@@ -50,4 +51,5 @@ Route::get('/perfil', 'LinkController@perfil');
 Route::post('/perfil', 'PerfilController@update');
 
 Route::get('/migrate', 'LinkController@migrate');
-Route::get('/migraterefresh', 'LinkController@migrateRefresh');
+Route::get('/migrate-refresh', 'LinkController@migrateRefresh');
+Route::get('/db-seed', 'LinkController@dbSeed');

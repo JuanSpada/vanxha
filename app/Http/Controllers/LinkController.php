@@ -27,6 +27,12 @@ class LinkController extends Controller
         return dd('Migración lista');
     }
 
+    public function dbSeed()
+    {
+        $migracion = Artisan::call('db:seed');
+        return dd('Seeders creados');
+    }
+
     public function perfil()
     {
         return view('perfil');

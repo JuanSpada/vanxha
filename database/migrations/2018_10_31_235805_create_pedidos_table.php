@@ -25,6 +25,7 @@ class CreatePedidosTable extends Migration
             $table->integer('precio');
             $table->integer('costo')->default(0);
             $table->integer('ganancia')->default(0);
+            $table->string('foto')->default('fotoPedido.png');
         });
     }
 
