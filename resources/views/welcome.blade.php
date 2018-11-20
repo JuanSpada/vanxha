@@ -90,7 +90,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div> --}}
-                <p>Creado para valentin y gonchi</p>
+                <p>Sistema de Ventas</p>
             </div>
         </div>
     </body>
