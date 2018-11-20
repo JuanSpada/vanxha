@@ -45,8 +45,42 @@
 
             </div>
     
-            <div class="card col-lg-8 bg-white border profile-container">
-               
+            <div class="card col-lg-8 bg-white border">
+                <ul class="nav nav-tabs profile-tab" id="myTabs" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tickets" role="tab" aria-selected="true" aria-expanded="true">Mis Tickets</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#nuevo" role="tab" aria-selected="true" aria-expanded="false">Nuevo Ticket</a> </li>
+                </ul>
+
+                <section class="tab-content">
+                    <article class="tab-pane active" id="tickets" role="tabpanel">
+                        <section class="card-body">
+                            <h4>Tickets de Soporte</h4>
+                            <hr>
+                            <p>Acá van los tickets</p>
+                        </section>
+                    </article>
+
+                    <article class="tab-pane" id="nuevo" role="tabpanel">
+                        <section class="card-body">
+                            <h4>Nuevo Ticket</h4>
+                            <hr>
+                            <form action="">
+                                @csrf
+                                <div class="form-group">
+                                     <label for="asunto">Asunto:</label>
+                                     <input name="asunto" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mensaje">Mensaje:</label>
+                                    <textarea name="mensaje"  class="form-control" rows="4"></textarea>
+                                </div>
+                                <button class="btn btn-primary" type="submit">Enviar</button>
+                            </form>
+                            
+                        </section>
+                    </article>
+
+                </section>
             </div>
         </div>
 </div>
