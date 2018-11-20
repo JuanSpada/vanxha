@@ -49,6 +49,9 @@ class EstadosController extends Controller
             'empresaId' => $empresa->id,
         ]);
 
+        $estados = Estado::where([
+            ['empresaId', $empresa->id],
+        ])->get();
         return view('configuracion')->with('estados', $estados);
     }
 
