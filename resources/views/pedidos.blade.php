@@ -117,7 +117,9 @@
                             <td>{{$pedido->descripcion}}</td>
                             <td>{{$pedido->fechaEntrega}}</td>
                             <td>
-                                @foreach (App\Estado::all() as $estado)
+                                @foreach (App\Estado::where([
+                                    ['empresaId', $pedido->empresaId],
+                                ])->get() as $estado)
                                     @if ($pedido->estado == $estado->id)
                                         <span class="badge {{$estado->badge}}">
                                             {{$estado->estado}}
