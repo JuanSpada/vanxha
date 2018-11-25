@@ -59,6 +59,14 @@
                                             <input class="form-control" type="number" name="telefono" placeholder="Teléfono">
                                         </div>
                                         <div class="form-group">
+                                                <label for="estado">Estado:</label>
+                                                <select class="form-control" name="estado">
+                                                    @foreach (App\Estado::where("empresaId", Auth::user()->empresaId)->get() as $estado)
+                                                            <option value="{{$estado->id}}">{{$estado->estado}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        <div class="form-group">
                                             <label for="descripcion">Descripcion:</label>
                                             <textarea name="descripcion"  class="form-control" rows="3"></textarea>
                                         </div>

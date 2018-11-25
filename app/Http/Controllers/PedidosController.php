@@ -74,6 +74,7 @@ class PedidosController extends Controller
         $pedido = Pedido::create([
             'empresaId' => $empresa->id,
             'nombrePersona' => $request->input('nombrePersona'),
+            'estado' => $request->input('estado'),
             'telefono' => $request->input('telefono'),
             'descripcion' => $request->input('descripcion'),
             'fechaEntrega' => $request->input('fechaEntrega'),
