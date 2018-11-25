@@ -5,7 +5,7 @@ use App\Pedido;
 
 $factory->define(App\Pedido::class, function (Faker $faker) {
     return [
-        'empresaId' => 1,
+        'empresaId' => $faker->numberBetween(1, 3),
         'nombrePersona' => $faker->name,
         'telefono' => $faker->e164PhoneNumber,
         // 'fechaEntrega' => $faker->date($format = 'Y-m-d'),

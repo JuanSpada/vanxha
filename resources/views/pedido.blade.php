@@ -53,13 +53,9 @@
                     <p>Costo: ${{$pedido->costo}}</p>
                     <p>Estado del Pedido:</p>
                     {{-- <span class="badge {{ $pedido->estadoColor() }}">{{$pedido->estado()}}</span> --}}
-                    @foreach (App\Estado::all() as $estado)
-                        @if ($pedido->estado == $estado->id)
-                            <span class="badge {{$estado->badge}}">
-                                {{$estado->estado}}
-                            </span>
-                        @endif
-                    @endforeach
+                    <span class="badge {{ App\Estado::find($pedido->estado)->badge }}">
+                        {{ App\Estado::find($pedido->estado)->estado }}
+                    </span>
                     <p>Fecha de Entrega:</p>
                     <p class="badge badge-dark">{{$pedido->fechaEntrega}}</p><br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -97,8 +93,12 @@
                             <div class="form-group">
                                 <label for="estado">Estado:</label>
                                 <select class="form-control" name="estado">
-                                    @foreach (App\Estado::all() as $estado)
-                                        <option value="{{$estado->id}}">{{$estado->estado}}</option>
+                                    @foreach (App\Estado::where("empresaId", Auth::user()->empresaId)->get() as $estado)
+                                        @if ($estado->id == $pedido->estado)
+                                            <option value="{{$estado->id}}" selected>{{$estado->estado}}</option>
+                                        @else
+                                            <option value="{{$estado->id}}">{{$estado->estado}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
