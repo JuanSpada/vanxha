@@ -53,3 +53,7 @@ Route::post('/perfil', 'PerfilController@update');
 Route::get('/migrate', 'LinkController@migrate');
 Route::get('/migrate-refresh', 'LinkController@migrateRefresh');
 Route::get('/db-seed', 'LinkController@dbSeed');
+
+Route::get('/database/{comando}', function ($comando) {
+    Artisan::call($comando);
+});
