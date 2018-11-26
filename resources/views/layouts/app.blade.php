@@ -25,10 +25,9 @@
 
 
 </head>
-<body>
-    <div class="d-flex flex-column justify-content-between contenido">
-
-        <div class="container-fluid">
+<body class="d-flex flex-column justify-content-between">
+    <div>
+        <div class="container-fluid d-flex flex-column">
             
             <nav class="row navbar navbar-expand-md navbar-light navbar-laravel border">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -82,14 +81,7 @@
                         </ul>
                     </div>
             </nav>
-            
-    
-        </div>
-    
-        <div class="container-fluid">
-    
             <div class="row">
-    
                 <div class="col-md-2 border side-bar">
                     <nav class="sidebar">
                         <ul class="nav nav-pills nav-fill">
@@ -113,6 +105,7 @@
                             </li>
                         </ul>
                     </nav>
+    
                 </div>
     
                 <div class="col-md-10 d-flex justify-content-center">
@@ -122,15 +115,15 @@
                 </div>
     
             </div>
-            <div class="row bg-white">
-                <div class="col-12">
-                    <footer class="text-center align-middle">
-                        <p>Sistema de ventas.</p>
-                    </footer>
-                </div>
-            </div>
-    
+            
         </div>
     </div>
+        <div class="container-fluid row bg-white">
+            <footer class="col-12 text-center">
+                <p>Sistema de ventas.</p>
+            </footer>
+        </div>
+    
+    
 </body>
 </html>

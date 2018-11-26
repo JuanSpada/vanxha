@@ -70,7 +70,7 @@ class PedidosController extends Controller
             'precio' => 'required',
         ];
         $this->validate($request, $validaciones, $mensajes);
-        $empresa = Empresa::find($request->user()->id);    
+        $empresa = Empresa::find($request->user()->empresaId);    
         $pedido = Pedido::create([
             'empresaId' => $empresa->id,
             'nombrePersona' => $request->input('nombrePersona'),

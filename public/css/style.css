@@ -1,7 +1,9 @@
-body, a, p {
+html, body, a, p {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
+
 .content{
     padding-top: 200px;
 }
@@ -9,7 +11,6 @@ body, a, p {
     margin-top: 40px;
 }
 .side-bar{
-    height: 100vh;
 }
 .sidebar ul{
     list-style: none;
@@ -31,7 +32,6 @@ body, a, p {
     
 }
 .contenido{
-    height: 100vh;
 }
 .profile-img{
     max-width: 200px;
@@ -52,5 +52,5 @@ body, a, p {
     padding: 25px;
 }
 .foto-pedido{
-    max-width: 300px;
+    max-width: 120px;
 }
