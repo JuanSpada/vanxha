@@ -7,7 +7,8 @@
 
 @section('content')
 
-    <div class="container-fluid">
+<div class="row pedido col-12">
+    <section class="col-md-12">
         <div class="col-12 tabla-productos border bg-white">
             <div class="col bg-white d-flex justify-content-end">
                 <div class="row search">
@@ -21,16 +22,16 @@
                                 <option selected disabled>Elegir Estado</option>
                                 
                                 @foreach ($pedidosYEstados['estados'] as $estado)
-    
+
                                     <option value="{{$estado->id}}">{{$estado->estado}}</option>
-    
+
                                 @endforeach
-    
+
                             </select>
                             
                         </div>
                         <button type="stubmit" class="btn btn-success">Buscar</button>
-    
+
                     </form>
                 </div>
             </div>
@@ -155,6 +156,6 @@
                 <hr>
             @endif
         </div>
-
-    </div>
+    </section>
+</div>
 @endsection
