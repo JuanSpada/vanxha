@@ -19,7 +19,7 @@
                 </div>
                 <div>
                     <p>Fecha:</p>
-                    <h5 class="badge">{{$pedido->created_at}}</h5>
+                    <h5 class="badge">{{$pedido->created_at->format('d M Y')}}</h5>
                 </div>
                 <div>
                     <p>Precio</p>

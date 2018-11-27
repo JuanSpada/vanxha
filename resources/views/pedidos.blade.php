@@ -122,7 +122,7 @@
                     @foreach ($pedidosYEstados['pedidos'] as $pedido)
                         <tr>
                             <td><a href="/pedidos/{{$pedido->id}}">{{$pedido->nombrePersona}}</td></a>
-                            <td>{{$pedido->created_at}}</td>
+                            <td>{{$pedido->created_at->format('d M Y')}}</td>
                             <td>{{$pedido->descripcion}}</td>
                             <td>{{$pedido->fechaEntrega}}</td>
                             <td>

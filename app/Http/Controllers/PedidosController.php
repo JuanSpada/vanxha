@@ -146,7 +146,11 @@ class PedidosController extends Controller
     }
 
     public function calendar(Request $request) {
-        $pedidos = Pedido::all();
+
+        $empresaId = Empresa::find($request->user()->empresaId)->id;
+        $pedidos = Pedido::where([
+            ['empresaId', $empresaId],
+        ])->get();
         
         $pedidosDelCalendario = [];
 
