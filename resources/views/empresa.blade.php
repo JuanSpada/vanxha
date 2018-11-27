@@ -6,7 +6,8 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="row pedido col-12">
+    <section class="col-md-12">
         <div class="row d-flex justify-content-around empresa-section">
     
             <div class="col-lg-3 bg-white border d-flex flex-column align-items-center empresa-content">
@@ -146,6 +147,7 @@
                 </section>
             </div>
         </div>
+    </section>
 </div>
 
 

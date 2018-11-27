@@ -8,7 +8,8 @@
 
 
 
-<div class="container-fluid">
+<div class="row pedido col-12">
+    <section class="col-md-12">
         <div class="row d-flex justify-content-around empresa-section">
     
             <div class="col-lg-3 bg-white border d-flex flex-column align-items-center empresa-content">
@@ -67,8 +68,8 @@
                             <form action="">
                                 @csrf
                                 <div class="form-group">
-                                     <label for="asunto">Asunto:</label>
-                                     <input name="asunto" type="text" class="form-control">
+                                    <label for="asunto">Asunto:</label>
+                                    <input name="asunto" type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="mensaje">Mensaje:</label>
@@ -83,6 +84,7 @@
                 </section>
             </div>
         </div>
+    </section>
 </div>
 
 <!-- Modal de Estado -->
